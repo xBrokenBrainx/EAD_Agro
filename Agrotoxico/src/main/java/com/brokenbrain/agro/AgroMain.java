@@ -1,9 +1,40 @@
 package com.brokenbrain.agro;
 
 
+import com.brokenbrain.agro.agricultor.model.Agricultor;
+import com.brokenbrain.agro.gpt.model.GPTAgro;
+import com.brokenbrain.agro.respostaplantio.model.RespostaPlantio;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+
 public class AgroMain {
 
     public static void main(String[] args) {
+
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("maria-db");
+        EntityManager manager = factory.createEntityManager();
+
+        var usuario = new Agricultor();
+        usuario.setQtdEspaco((float)10);
+        usuario.setCidade("São Paulo");
+
+        var resposta = new RespostaPlantio();
+        resposta.setAgricultor(usuario);
+        resposta.setDtColheita(6);
+        resposta.setQtdOpcoes(5);
+
+        var gpt = new GPTAgro();
+        gpt.setAgricultor(usuario);
+
+        manager.getTransaction().begin();
+        manager.persist(usuario);
+        manager.persist(resposta);
+        manager.persist(gpt);
+        manager.getTransaction().commit();
+        manager.close();
+        factory.close();
+
 
         /*
         // - Instanciando EntityManager e setando banco de dados

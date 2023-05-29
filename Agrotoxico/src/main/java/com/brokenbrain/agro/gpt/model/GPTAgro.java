@@ -22,8 +22,8 @@ public class GPTAgro {
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(
-            name = "ID_RESPOSTA_PLANTIO",
-            referencedColumnName = "ID_RESPOSTA_PLANTIO",
+            name = "ID_RESPOSTA",
+            referencedColumnName = "ID_RESPOSTA",
             foreignKey = @ForeignKey(name = "FK_GPT_RESPOSTA", value = ConstraintMode.CONSTRAINT)
     )
     private RespostaPlantio respostaPlantio;
