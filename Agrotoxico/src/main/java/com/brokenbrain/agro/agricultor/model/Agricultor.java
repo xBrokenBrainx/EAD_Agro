@@ -13,12 +13,12 @@ public class Agricultor {
     private Long id;
 
     @Column(name = "QTD_ESPACO")
-    private String qtdEspaco;
+    private Float qtdEspaco;
 
     @Column(name = "NM_CIDADE")
     private String cidade;
 
-    public void setQtdEspaco(String qtdEspaco) {
+    public void setQtdEspaco(Float qtdEspaco) {
         this.qtdEspaco = qtdEspaco;
     }
 
@@ -30,7 +30,7 @@ public class Agricultor {
         return id;
     }
 
-    public String getQtdEspaco() {
+    public Float getQtdEspaco() {
         return qtdEspaco;
     }
 
