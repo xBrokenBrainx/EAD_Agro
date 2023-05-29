@@ -26,6 +26,7 @@ public class AgroMain {
 
         var gpt = new GPTAgro();
         gpt.setAgricultor(usuario);
+        gpt.setRespostaPlantio(resposta);
 
         manager.getTransaction().begin();
         manager.persist(usuario);

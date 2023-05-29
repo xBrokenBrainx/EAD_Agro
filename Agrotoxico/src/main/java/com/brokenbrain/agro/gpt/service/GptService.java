@@ -18,19 +18,16 @@ public class GptService {
 
     // - Setando parâmetros de entrada para o input na API da Open AI -
     private static String KEY = "";
-    private String PROMPT = "";
+    private String PROMPT;
     private long MAX_TOKENS = 1000;
     private float TEMPERATURE = 1;
     private String MODEL = "text-davinci-003";
 
-    // - outputGptMap é o mapeamento do Json do Output da API da OpenAI
     private Map<String, Object> outputGptMap;
     public Map<String, Object> getOutputGptMap() {
         return outputGptMap;
     }
 
-    // - gerarTreino é o método que integra a API da Open AI
-    // - fazendo o trabalho de passar o input e receber/mapear o output
     public void gerarTreino() {
         try {
             DefaultHttpClient client = new DefaultHttpClient();
@@ -64,7 +61,7 @@ public class GptService {
             // - Executando a requisição POST na API da OpenAI
             HttpResponse response = client.execute(post);
 
-            // - if para verificar se a requisição http foi executada com sucesso
+            //  verificar se a requisição http foi executada com sucesso
             if (response.getStatusLine().getStatusCode() != 201)
                 System.out.println("HTTP Status Code: " + response.getStatusLine().getStatusCode());
 
@@ -72,16 +69,15 @@ public class GptService {
             BufferedReader reader = new BufferedReader(
                     new InputStreamReader( response.getEntity().getContent() ));
 
-            // - outputGpt é a variável onde recebe o output da API da OpenAI e printa no console
             String outputGpt;
             System.out.println("\n\nGPT Resposta: \n");
-            // - objectMapper é instância do mapeamento do JSON de output da API da OpenAI
-            ObjectMapper objectMapper = new ObjectMapper();
-            // - Enquanto houver linha de resposta(diferente de nulo) do output da API da OpenAI
-            // - continua printando output e mapeando o JSON do output.
+
+            ObjectMapper jsonOutput = new ObjectMapper();
+
+
             while (( outputGpt = reader.readLine() ) != null) {
                 System.out.println(outputGpt);
-                outputGptMap = objectMapper.readValue(outputGpt, Map.class);
+                outputGptMap = jsonOutput.readValue(outputGpt, Map.class);
             }
 
             // - Fechando/Desligando conexão
