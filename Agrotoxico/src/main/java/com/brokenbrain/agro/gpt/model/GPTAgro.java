@@ -36,6 +36,10 @@ public class GPTAgro {
     )
     private Agricultor agricultor;
 
+    public void setRespostaPlantio(RespostaPlantio respostaPlantio) {
+        this.respostaPlantio = respostaPlantio;
+    }
+
     public void setAgricultor(Agricultor agricultor) {
         this.agricultor = agricultor;
     }
