@@ -9,7 +9,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
-import java.util.ArrayList;
 
 public class AgroMain {
 
@@ -17,7 +16,7 @@ public class AgroMain {
 
         var agricultor = new Agricultor();
         agricultor.setUsername("newren");
-        agricultor.setCidade("Garanhuns");
+        agricultor.setCidade("São Paulo");
 
         var terreno = new Terreno(agricultor);
         terreno.setNmEstacao("Primavera");
@@ -29,11 +28,8 @@ public class AgroMain {
 
         var gpt = new GPTService();
         gpt.setRespostaGPT( resposta );
-
-        gpt.gerarRespostaPlantio(
-                gpt.gerarPrompt( terreno )
-        );
-
+        gpt.gerarPrompt( terreno );
+        gpt.gerarRespostaPlantio();
 
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("maria-db");
         EntityManager manager = factory.createEntityManager();
@@ -45,7 +41,5 @@ public class AgroMain {
         manager.close();
         factory.close();
 
-
     }
-
 }
