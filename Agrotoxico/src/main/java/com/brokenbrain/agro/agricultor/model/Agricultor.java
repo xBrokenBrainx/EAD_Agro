@@ -11,15 +11,22 @@ public class Agricultor {
     @SequenceGenerator(name = "SQ_AGRICULTOR", sequenceName = "SQ_AGRICULTOR")
     @Column(name = "ID_AGRICULTOR")
     private Long id;
-
-    @Column(name = "QTD_ESPACO")
-    private Float qtdEspaco;
-
     @Column(name = "NM_CIDADE")
     private String cidade;
 
-    public void setQtdEspaco(Float qtdEspaco) {
-        this.qtdEspaco = qtdEspaco;
+    @Column(name = "NM_USERNAME")
+    private String username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getCidade() {
+        return cidade;
     }
 
     public void setCidade(String cidade) {
@@ -30,12 +37,5 @@ public class Agricultor {
         return id;
     }
 
-    public Float getQtdEspaco() {
-        return qtdEspaco;
-    }
-
-    public String getCidade() {
-        return cidade;
-    }
 
 }
