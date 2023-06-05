@@ -1,0 +1,5 @@
+Refatoração
+Código refatorado e reorganizado
+Classes e métodos com melhor divisão de responsabilidades.
+De maneira à buscar uma única responsabilidade para cada, inspirado no conceito de Single Responsibility Principle (SRP).
+Para que o código fique mais limpo e manutenível.
