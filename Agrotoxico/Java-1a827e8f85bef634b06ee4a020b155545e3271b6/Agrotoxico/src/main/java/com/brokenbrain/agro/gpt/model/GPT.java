@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GPT extends Prompt{
-    protected static String KEY = "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";
+    protected static String KEY = "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";
     protected long MAX_TOKENS = 1500;
     protected float TEMPERATURE = 1;
     protected String MODEL = "text-davinci-003";
